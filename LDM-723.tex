@@ -1,0 +1,144 @@
+% vim: tw=0:wrap:linebreak
+\documentclass[DM,toc,lsstdraft]{lsstdoc}
+
+\usepackage{comment}
+\usepackage{datetime}
+\usepackage{microtype}
+
+\newcommand{\microarcsec}{$\mu$as\xspace}
+\interfootnotelinepenalty=10000
+
+
+\setcounter{secnumdepth}{3}
+
+%%%%%%%%%%%%%%%%%%%%%
+% Introduce mechanism to turn on and off various annotations (\XXX command,
+% \begin{notes}, and anything else bracketed by \ifannotated ... \fi)
+%
+\newif\ifannotated
+\annotatedtrue
+\annotatedfalse	% uncomment this to hide all annotations (comments, notes, etc)
+
+\ifannotated
+	% leave things as-is
+\else
+	% hide all \XXX commands
+	\renewcommand{\XXX}{}
+
+	% hide all \begin{note}...\end{note} text
+	\renewenvironment{note}[1][Note]
+	{}
+	{}
+\fi
+%%%%%%%%%%%%%%%%%%%%%
+
+\title{Call for Proposals for Community Alert Brokers}
+\author{
+Eric~Bellm,
+Robert~Blum,
+Melissa~Graham,
+Leanne~Guy,
+\v{Z}eljko~Ivezi\'{c},
+William~O'Mullane,
+and John~Swinbank
+\emph{for the LSST Project}
+}
+
+\input{meta}
+\setDocRef{\lsstDocType-\lsstDocNum}
+\setDocCurator{E.~Bellm}
+\setDocDate{\vcsdate}
+\setDocUpstreamVersion{\vcsrevision}
+\setDocUpstreamLocation{\url{https://github.com/lsst/LDM-723}}
+
+%
+%   Revision history
+%
+% OLDEST FIRST: VERSION, DATE, DESCRIPTION, OWNER NAME
+\setDocChangeRecord{%
+\addtohist{}{2019-10-11}{Initial draft version}{Eric Bellm}
+}
+
+
+\begin{document}
+
+
+\setDocAbstract{%
+A major product of the nightly processing of LSST images is a world-public stream of alerts from transient, variable, and moving sources. Science users may access these alerts through third-party community brokers, which will receive the LSST alerts, add scientific value, and redistribute them to the scientific community.
+ 
+This document is a call for proposals for community brokers, as described in ``Plans and Policies for LSST Alert Distribution'' \citedsp{LDM-612}.
+}
+
+\maketitle
+
+\section{Process}
+
+The broker selection process has two stages:
+an initial open call for LOIs from all interested parties (described in \citedsp{LDM-682}), and a subsequent full proposal call solicited from invited LOI writers (described in this document).
+
+The outcome of this proposal call will be the selection of community brokers to receive the alert stream directly from LSST Data Facility.
+Bandwidth for at least five full streams are required to be supported, although we reserve the right to select fewer brokers to connect during the commissioning and early operations phases.
+
+Some responses to the call for LOIs described broker systems that did not envision direct connection to the alert stream.
+We welcome proposals from these broker teams so that the selection panel can have a complete picture of the developing alert ecosystem.
+Proposers should make clear if they are requesting direct access to the alert stream.
+Proposers requesting direct stream access are encouraged to indicate their capacity to forward full or partial streams to downstream teams as well as any specific agreements they have made to do so. 
+
+
+\section{Proposal Guidelines}
+
+\subsection{Who Can Submit}
+
+Submission is limited to teams who submitted LOIs in 2019.
+It is anticipated that there will be future opportunities for additional brokers to join during LSST Operations.
+
+\subsection{Page Limits}
+
+LOIs should be no more than fifteen \textbf{TBC} pages, with standard margins and font sizes.
+A \LaTeX\ template is available at \url{https://github.com/lsst/LDM-673/blob/master/broker_proposal_submission_template.tex}.
+
+\subsection{Due Date}
+
+For full consideration, proposals should be submitted by May 15, 2020.
+
+\subsection{Content}
+
+
+\citeds{LDM-612}: Plans and Policies for LSST Alert Distribution, has been updated, and proposers are encouraged to review it.
+The proposal should address the following items:
+
+\begin{itemize}
+	\item Scientific goals of the proposed broker system
+	\item Stream access 
+	\item Data products \& services
+	\item Technical implementation
+	\item Previous Results
+	\item Management Plan
+	\item Description of proposing team
+\end{itemize}
+
+The \LaTeX\ template provides a handful of prompts for each section.
+
+\subsection{Submission Instructions}
+
+Please submit proposals as PDF documents to \url{lsst-community-brokers@lists.lsst.org}.
+
+\section{Sample Alerts}
+
+We plan to provide sample alerts from precusor survey data processed through the LSST Science Pipelines and serialized in the current LSST formats.
+\textbf{Details will be forthcoming.}
+
+\section{Selection Process and Timeline}
+
+Please refer to \citeds{LDM-612} \S4.5--4.6 for evaluation criteria and procedures.
+
+We anticipate notifying selected brokers in August 2020.
+
+%\clearpage
+%\section{Acronyms}
+%\input{acronyms}
+
+\bibliography{lsst,refs_ads,refs,local}
+
+
+\end{document}
