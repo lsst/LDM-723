@@ -83,6 +83,7 @@ Some responses to the call for LOIs described broker systems that did not envisi
 We welcome proposals from these broker teams so that the selection panel can have a complete picture of the developing alert ecosystem.
 Proposers should make clear if they are requesting direct access to the alert stream.
 Proposers requesting direct stream access are encouraged to indicate their capacity to forward full or partial streams to downstream teams as well as any specific agreements they have made to do so. 
+Teams that are not requesting direct stream access from LSST should indicate what they do require and which upstream broker(s) can provide the necessary output, if known.
 
 
 \section{Proposal Guidelines}
@@ -94,39 +95,93 @@ It is anticipated that there will be future opportunities for additional brokers
 
 \subsection{Page Limits}
 
-LOIs should be no more than fifteen \textbf{TBC} pages, with standard margins and font sizes.
-A \LaTeX\ template is available at \url{https://github.com/lsst/LDM-723/blob/master/broker_proposal_submission_template.tex}.
+Proposals should be no more than ten pages, with standard margins and font sizes.
+A \LaTeX\ template is available at \\
+\url{https://github.com/lsst/LDM-723/blob/master/broker_proposal_submission_template.tex}.
 
 \subsection{Due Date}
 
-For full consideration, proposals should be submitted by May 15, 2020.
-
-\subsection{Content}
-
-
-\citeds{LDM-612}: Plans and Policies for LSST Alert Distribution, has been updated, and proposers are encouraged to review it.
-The proposal should address the following items:
-
-\begin{itemize}
-	\item Scientific goals of the proposed broker system
-	\item Stream access 
-	\item Data products \& services
-	\item Technical implementation
-	\item Previous Results
-	\item Management Plan
-	\item Description of proposing team
-\end{itemize}
-
-The \LaTeX\ template provides a handful of prompts for each section.
+For full consideration, proposals should be submitted by June 15, 2020.
 
 \subsection{Submission Instructions}
 
 Please submit proposals as PDF documents to \url{lsst-community-brokers@lists.lsst.org}.
 
+\subsection{Content}
+
+
+\citeds{LDM-612}: Plans and Policies for LSST Alert Distribution, has been updated, and proposers are encouraged to review it for information on evaluation criteria.
+The proposal should address the following items:
+
+\subsubsection{Scientific goals of the proposed broker system}
+
+\begin{itemize}
+\item Describe the scientific aims of your proposed broker. 
+\item Does it aim to add value to all LSST alerts, or a subset (e.g., supernovae or asteroids)?
+\item What science questions will users of your broker be able to answer?
+\end{itemize}
+
+\subsubsection{Stream Access}
+
+\begin{itemize}
+\item Are you requesting direct access to the alert stream from LSST?  If not, how do you anticipate receiving alert data? 
+\item Are you requesting the complete contents of all alerts, or a filtered subset of either the alerts (e.g., only alerts matching Solar System Objects) or their contents (e.g., alerts with postage stamps and history removed)?  Please be as specific as possible, as this will aid estimates of bandwidth usage.
+\item If you are requesting a direct connection to the stream, what capacity do you have to forward alerts to more specialized broker systems downstream?  Are there other teams you have agreed to forward alerts to?
+\end{itemize}
+
+\subsubsection{Data Products \& Services}
+
+\begin{itemize}
+\item Describe the anticipated outputs and resultant data products of your processing of the LSST alert stream. 
+\item What kinds of transformations, cross-matches to other surveys or catalogs, filters, and/or classifications will your broker perform?
+\item How will users access them?
+\item Who will be eligible to use your broker?  (Broad access is preferred.)
+\item Do you anticipate multiple classes of users and/or differing resource allocations?
+\item Describe any plans for services to enable follow-up observations or collaborations with follow-up facilities.
+\end{itemize}
+
+
+
+\subsubsection{Technical Implementation}
+
+\begin{itemize}
+\item Describe the software and hardware technologies with which you intend to implement your broker service, and discuss its architecture.
+\item Discuss the maturity of the system---which parts are at a conceptual or early design phase?  Are some prototyped? Are any in operation already?
+\item On what timescale will users be able to access alert data after your broker receives it?
+\item Describe the datacenter(s) in which you plan to host your service.
+\end{itemize}
+
+
+\subsubsection{Previous Results}
+
+\begin{itemize}
+\item Present examples of data products, services, and/or scientific results (if any) from your system on precursor data, which may include (but is not limited to) ZTF alerts, data from other time-domain surveys (e.g., \textit{Kepler}, \textit{TESS}, \textit{Gaia}, PanSTARRS, ATLAS, ASAS-SN, DECam, HSC...), simulations, or sample alerts processed by the LSST pipelines.
+\item Describe community usage your broker system on any of the above, or plans to encourage community adoption of your service.
+\end{itemize}
+	
+\subsubsection{Management Plan}
+
+\begin{itemize}
+\item Describe the number of FTEs required during the construction and operations phases.
+\item Present a detailed timeline and major milestones for implementing, verifying, and validating the services to be developed.
+\item How long do you anticipate operating your broker system?
+\item Discuss potential or actual funding sources available to support these activities.	
+\end{itemize}
+
+
+\subsubsection{Proposing Team}
+
+\begin{itemize}
+\item Describe the roles and expertise of the proposers and any key personnel.
+\item Describe related services the team has developed, if any.
+\item Describe any experience the team has processing alert streams of currently operational astronomical surveys. 
+\end{itemize}
+
+
 \section{Sample Alerts}
 
 We plan to provide sample alerts from precusor survey data processed through the LSST Science Pipelines and serialized in the current LSST formats.
-\textbf{Details will be forthcoming.}
+Details will be forthcoming in the first quarter of 2020.
 
 \section{Selection Process and Timeline}
 

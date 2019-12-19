@@ -39,5 +39,5 @@ tex=$(filter-out $(wildcard *acronyms.tex) , $(wildcard *.tex sections/*tex))
 acronyms.tex :$(tex) myacronyms.txt
 	generateAcronyms.py   $(tex)
 
-template: LOI_submission_template.tex
-	xelatex LOI_submission_template.tex
+template: broker_proposal_submission_template.tex
+	xelatex broker_proposal_submission_template.tex
