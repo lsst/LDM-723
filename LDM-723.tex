@@ -1,0 +1,199 @@
+% vim: tw=0:wrap:linebreak
+\documentclass[DM,toc,lsstdraft]{lsstdoc}
+
+\usepackage{comment}
+\usepackage{datetime}
+\usepackage{microtype}
+
+\newcommand{\microarcsec}{$\mu$as\xspace}
+\interfootnotelinepenalty=10000
+
+
+\setcounter{secnumdepth}{3}
+
+%%%%%%%%%%%%%%%%%%%%%
+% Introduce mechanism to turn on and off various annotations (\XXX command,
+% \begin{notes}, and anything else bracketed by \ifannotated ... \fi)
+%
+\newif\ifannotated
+\annotatedtrue
+\annotatedfalse	% uncomment this to hide all annotations (comments, notes, etc)
+
+\ifannotated
+	% leave things as-is
+\else
+	% hide all \XXX commands
+	\renewcommand{\XXX}{}
+
+	% hide all \begin{note}...\end{note} text
+	\renewenvironment{note}[1][Note]
+	{}
+	{}
+\fi
+%%%%%%%%%%%%%%%%%%%%%
+
+\title{Call for Proposals for Community Alert Brokers}
+\author{
+Eric~Bellm,
+Robert~Blum,
+Melissa~Graham,
+Leanne~Guy,
+\v{Z}eljko~Ivezi\'{c},
+William~O'Mullane,
+and John~Swinbank
+\emph{for the LSST Project}
+}
+
+\input{meta}
+\setDocRef{\lsstDocType-\lsstDocNum}
+\setDocCurator{E.~Bellm}
+\setDocDate{\vcsdate}
+\setDocUpstreamVersion{\vcsrevision}
+\setDocUpstreamLocation{\url{https://github.com/lsst/LDM-723}}
+
+%
+%   Revision history
+%
+% OLDEST FIRST: VERSION, DATE, DESCRIPTION, OWNER NAME
+\setDocChangeRecord{%
+\addtohist{}{2019-10-11}{Initial draft version}{Eric Bellm}
+}
+
+
+\begin{document}
+
+
+\setDocAbstract{%
+A major product of the nightly processing of LSST images is a world-public stream of alerts from transient, variable, and moving sources. Science users may access these alerts through third-party community brokers, which will receive the LSST alerts, add scientific value, and redistribute them to the scientific community.
+ 
+This document is a call for proposals for community brokers, as described in ``Plans and Policies for LSST Alert Distribution'' \citedsp{LDM-612}.
+}
+
+\maketitle
+
+\section{Process}
+
+The broker selection process has two stages:
+an initial open call for LOIs from all interested parties (described in \citedsp{LDM-682}), and a subsequent full proposal call solicited from invited LOI writers (described in this document).
+
+The outcome of this proposal call will be the selection of community brokers to receive the alert stream directly from the LSST Data Facility.
+Bandwidth for at least five full streams are required to be supported (DMS-REQ-391, \citeds{LSE-61}), although we reserve the right to select fewer brokers to connect during commissioning and the first year of operations.
+
+Some responses to the call for LOIs described broker systems that did not envision direct connection to the alert stream.
+We welcome proposals from these broker teams so that the selection panel can have a complete picture of the developing alert ecosystem.
+Proposers should make clear if they are requesting direct access to the alert stream.
+Proposers requesting direct stream access are encouraged to indicate their capacity to forward full or partial streams to downstream teams as well as any specific agreements they have made to do so. 
+Teams that are not requesting direct stream access from LSST should indicate what they do require and which upstream broker(s) can provide the necessary output, if known.
+
+
+\section{Proposal Guidelines}
+
+\subsection{Who Can Submit}
+
+Submission is limited to teams who submitted LOIs in 2019; all LOI teams are invited to propose.
+It is anticipated that there will be future opportunities for additional brokers to join during LSST Operations.
+
+\subsection{Page Limits}
+
+Proposals should be no more than ten pages, with standard margins and font sizes.
+A \LaTeX\ template is available at \\
+\url{https://github.com/lsst/LDM-723/blob/master/broker_proposal_submission_template.tex}.
+
+\subsection{Due Date}
+
+For full consideration, proposals should be submitted by June 15, 2020.
+
+\subsection{Submission Instructions}
+
+Please submit proposals as PDF documents to \url{lsst-community-brokers@lists.lsst.org}.
+
+\subsection{Content}
+
+
+\citeds{LDM-612}: Plans and Policies for LSST Alert Distribution, has been updated, and proposers are encouraged to review it for information on evaluation criteria and a revised timeline.
+The proposal should address the following items:
+
+\subsubsection{Scientific goals of the proposed broker system}
+
+\begin{itemize}
+\item Describe the scientific aims of your proposed broker. 
+\item Does it aim to add value to all LSST alerts, or a subset (e.g., supernovae or asteroids) thereof?
+\item What science questions will users of your broker be able to ask?
+\end{itemize}
+
+\subsubsection{Stream Access}
+
+\begin{itemize}
+\item Are you requesting direct access to the alert stream from LSST?  If not, how do you anticipate receiving alert data? 
+\item Are you requesting the complete contents of all alerts, or a filtered subset of either the alerts (e.g., only alerts matching Solar System Objects) or their contents (e.g., alerts with postage stamps and history removed)?  Please be as specific as possible, as this will aid estimates of bandwidth usage.
+\item If you are requesting a direct connection to the stream, what capacity do you have to forward alerts to more specialized broker systems downstream?  Are there other teams with which you already have an existing agreement to forward alerts?
+\end{itemize}
+
+\subsubsection{Data Products \& Services}
+
+\begin{itemize}
+\item Describe the anticipated outputs and resultant data products of your processing of the LSST alert stream. 
+\item What kinds of transformations, cross-matches to other surveys or catalogs, filters, and/or classifications will your broker perform?
+\item How will users access them?
+\item Who will be eligible to use your broker?  (Broad access will be favourably viewed.)
+\item Do you anticipate multiple classes of users and/or differing resource allocations?
+\item Describe any plans for services to enable follow-up observations or collaborations with follow-up facilities.
+\end{itemize}
+
+
+
+\subsubsection{Technical Implementation}
+
+\begin{itemize}
+\item Describe the software and hardware technologies with which you intend to implement your broker service, and discuss its architecture.
+\item Discuss the maturity of the system---which parts are at a conceptual or early design phase?  Are some prototyped? Are any in operation already?
+\item On what timescale will users be able to access alert data after your broker receives it?
+\item Describe the datacenter(s) in which you plan to host your service.
+\end{itemize}
+
+
+\subsubsection{Previous Results}
+
+\begin{itemize}
+\item Present examples of data products, services, and/or scientific results (if any) from your system on precursor data, which may include (but is not limited to) ZTF alerts, data from other time-domain surveys (e.g., \textit{Kepler}, \textit{TESS}, \textit{Gaia}, PanSTARRS, ATLAS, ASAS-SN, DECam, HSC...), simulations, or sample alerts processed by the LSST pipelines.
+\item Describe community usage of your broker system on any of the above, or plans to encourage community adoption of your service.
+\end{itemize}
+	
+\subsubsection{Management Plan}
+
+\begin{itemize}
+\item Describe the number of FTEs required during the construction and operations phases.
+\item Present a detailed timeline and major milestones for implementing, verifying, and validating the services to be developed.
+\item How long do you anticipate operating your broker system?
+\item Discuss potential or actual funding sources available to support these activities.	
+\end{itemize}
+
+
+\subsubsection{Proposing Team}
+
+\begin{itemize}
+\item Describe the roles and expertise of the proposers and any key personnel.
+\item Describe related services the team has developed, if any.
+\item Describe any experience the team has processing alert streams of currently operational astronomical surveys. 
+\end{itemize}
+
+
+\section{Sample Alerts}
+
+We plan to provide sample alerts from precusor survey data processed through the LSST Science Pipelines and serialized in the current LSST formats.
+Details will be forthcoming in the first quarter of 2020.
+
+\section{Selection Process and Timeline}
+
+Please refer to \citeds{LDM-612} \S4.6--4.7 for evaluation criteria and procedures.
+
+We anticipate notifying selected brokers by the end of August 2020.
+
+%\clearpage
+%\section{Acronyms}
+%\input{acronyms}
+
+\bibliography{lsst,refs_ads,refs,local}
+
+
+\end{document}
