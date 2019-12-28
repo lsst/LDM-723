@@ -14,7 +14,7 @@ ifneq "$(GITSTATUS)" ""
 	GITDIRTY = -dirty
 endif
 
-$(JOBNAME).pdf: $(DOCNAME).tex meta.tex
+$(JOBNAME).pdf: $(DOCNAME).tex meta.tex acronyms.tex
 	xelatex -jobname=$(JOBNAME) $(DOCNAME)
 	bibtex $(JOBNAME)
 	xelatex -jobname=$(JOBNAME) $(DOCNAME)
@@ -41,3 +41,6 @@ acronyms.tex :$(tex) myacronyms.txt
 
 template: broker_proposal_submission_template.tex
 	xelatex broker_proposal_submission_template.tex
+
+clean :
+	rm *.pdf *.nav *.bbl *.xdv *.snm

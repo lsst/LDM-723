@@ -192,11 +192,13 @@ Please refer to \citeds{LDM-612} \S4.6--4.7 for evaluation criteria and procedur
 
 We anticipate notifying selected brokers by the end of August 2020.
 
-%\clearpage
-%\section{Acronyms}
-%\input{acronyms}
+\section{References} \label{sec:bib}
 
+\renewcommand{\refname}{}
 \bibliography{lsst,refs_ads,refs,local}
 
+%Make sure lsst-texmf/bin/generateAcronyms.py is in your path
+\section{Acronyms used in this document}\label{sec:acronyms}
+\input{acronyms.tex}
 
 \end{document}
