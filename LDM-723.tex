@@ -57,6 +57,7 @@ and John~Swinbank
 % OLDEST FIRST: VERSION, DATE, DESCRIPTION, OWNER NAME
 \setDocChangeRecord{%
 \addtohist{}{2019-10-11}{Initial draft version}{Eric Bellm}
+\addtohist{1.0}{2019-12-27}{First issue approved in RFC-654}{Eric Bellm, Leanne Guy}
 }
 
 
@@ -77,7 +78,7 @@ The broker selection process has two stages:
 an initial open call for LOIs from all interested parties (described in \citedsp{LDM-682}), and a subsequent full proposal call solicited from invited LOI writers (described in this document).
 
 The outcome of this proposal call will be the selection of community brokers to receive the alert stream directly from the LSST Data Facility.
-Bandwidth for at least five full streams are required to be supported (DMS-REQ-391, \citeds{LSE-61}), although we reserve the right to select fewer brokers to connect during commissioning and the first year of operations.
+Bandwidth for at least five full streams is required to be supported (DMS-REQ-391, \citeds{LSE-61}), although we reserve the right to select fewer brokers to connect during commissioning and the first year of operations.
 
 Some responses to the call for LOIs described broker systems that did not envision direct connection to the alert stream.
 We welcome proposals from these broker teams so that the selection panel can have a complete picture of the developing alert ecosystem.
@@ -85,6 +86,7 @@ Proposers should make clear if they are requesting direct access to the alert st
 Proposers requesting direct stream access are encouraged to indicate their capacity to forward full or partial streams to downstream teams as well as any specific agreements they have made to do so. 
 Teams that are not requesting direct stream access from LSST should indicate what they do require and which upstream broker(s) can provide the necessary output, if known.
 
+Proposals provided in response to this call will be treated as private communications and will not be made publicly available by the LSST Project.
 
 \section{Proposal Guidelines}
 
@@ -149,6 +151,7 @@ The proposal should address the following items:
 \item Discuss the maturity of the system---which parts are at a conceptual or early design phase?  Are some prototyped? Are any in operation already?
 \item On what timescale will users be able to access alert data after your broker receives it?
 \item Describe the datacenter(s) in which you plan to host your service.
+\item Describe plans to support integration activities,  both during LSST Commissioning and Early Operations,  and later during the course of the survey if or when technical aspects of the broker interface are modified.
 \end{itemize}
 
 
@@ -165,6 +168,7 @@ The proposal should address the following items:
 \item Describe the number of FTEs required during the construction and operations phases.
 \item Present a detailed timeline and major milestones for implementing, verifying, and validating the services to be developed.
 \item How long do you anticipate operating your broker system?
+\item Describe plans and processes to handle downstream user enquiries and issues independently of LSST.
 \item Discuss potential or actual funding sources available to support these activities.	
 \end{itemize}
 
@@ -189,11 +193,13 @@ Please refer to \citeds{LDM-612} \S4.6--4.7 for evaluation criteria and procedur
 
 We anticipate notifying selected brokers by the end of August 2020.
 
-%\clearpage
-%\section{Acronyms}
-%\input{acronyms}
+\section{References} \label{sec:bib}
 
+\renewcommand{\refname}{}
 \bibliography{lsst,refs_ads,refs,local}
 
+%Make sure lsst-texmf/bin/generateAcronyms.py is in your path
+\section{Acronyms used in this document}\label{sec:acronyms}
+\input{acronyms.tex}
 
 \end{document}
